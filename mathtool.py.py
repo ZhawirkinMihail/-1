@@ -2,19 +2,19 @@ a = input("Введите a: ")
 try:
     aa = int(a)
 except ValueError:
-    print("Это не число")
+    print("Это не нужный тип данных")
 
 b = input("Введите b: ")
 try:
     bb = int(b)
 except ValueError:
-    print("Это не число")
-    
+    print("Это не нужный тип данных")
+
 c = input("Введите c: ")
 try:
     cc = int(c)
 except ValueError:
-    print("Это не число")
+    print("Это не нужный тип данных")
     
 x1 = x2 = None
 if abs(a) > 10000 or abs(b) > 10000 or abs(c) > 10000:
