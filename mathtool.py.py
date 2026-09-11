@@ -1,6 +1,20 @@
-a = int(input("Введите a: "))
-b = int(input("Введите b: "))
-c = int(input("Введите c: "))
+a = input("Введите a: ")
+try:
+    aa = int(a)
+except ValueError:
+    print("Это не число")
+
+b = input("Введите b: ")
+try:
+    bb = int(b)
+except ValueError:
+    print("Это не число")
+    
+c = input("Введите c: ")
+try:
+    cc = int(c)
+except ValueError:
+    print("Это не число")
     
 x1 = x2 = None
 if abs(a) > 10000 or abs(b) > 10000 or abs(c) > 10000:
