@@ -6,22 +6,28 @@ MAX_ITERATIONS = 100_000
 DIGITS = math.ceil(-math.log10(MAX_EPS))
    
 def sign(n):
-    """Знак n-го слагаемого: +1 для нечётных n, -1 для чётных."""
     if n % 2 == 0:
         return -1
     return 1 
- 
+
+#(n-3)**3 + 2
+def form(n):
+    r = ((n-3) ** 3 - 8)
+    if r == 0:
+        return 0
+    return sign(n)/((n-3) ** 3 - 8)
+
+
 def term_third(n):
-    """n-е слагаемое ряда 1/3 - 1/6 + 1/9 - ...: знак / (3n)."""
     return sign(n) / (3 * n)
  
 def term_sqplus(n):
-    """n-е слагаемое ряда 1/(1^2+1) - 1/(2^2+1) + ...: знак / (n^2 + 1)."""
     return sign(n) / (n * n + 1)
  
 FORMULAS = {
     "third":  (term_third,  "S = 1/3 - 1/6 + 1/9 - ..."),
     "sqplus": (term_sqplus, "S = 1/(1^2+1) - 1/(2^2+1) + 1/(3^2+1) - ..."),
+    "form": (form, "s = 1/((1-3)**3 + 2)"),
 }
   
 def check_terms(terms):
