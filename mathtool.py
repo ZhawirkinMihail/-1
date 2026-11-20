@@ -103,13 +103,11 @@ HANDLERS = {
 
 
 def describe_error(error):
-    """Текст сообщения об ошибке."""
     if isinstance(error, OSError) and error.filename is not None:
         return f"файл не открывается: {error.filename}"
     return str(error)
 
 def main(argv):
-    """Разобрать параметры, выполнить команду, вернуть код завершения."""
     parser = cli.build_parser()
     args = parser.parse_args(argv)
     if args.command is None:
