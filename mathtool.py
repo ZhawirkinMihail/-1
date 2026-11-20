@@ -25,6 +25,7 @@ def handle_solve(args):
     kind, discriminant, roots = equation.solve(a, b, c)
 
     print(f"Уравнение {kind}")
+    
     if discriminant is not None:
         print(f"Дискриминант: {discriminant}")
     if len(roots) == 2:

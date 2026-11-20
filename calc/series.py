@@ -15,7 +15,7 @@ def form(n):
     r = ((n-3) ** 3 - 8)
     if r == 0:
         return 0
-    return sign(n)/((n-3) ** 3 - 8)
+    return sign(n)/r
 
 
 def term_third(n):
@@ -23,6 +23,7 @@ def term_third(n):
  
 def term_sqplus(n):
     return sign(n) / (n * n + 1)
+
  
 FORMULAS = {
     "third":  (term_third,  "S = 1/3 - 1/6 + 1/9 - ..."),
@@ -37,11 +38,16 @@ def check_terms(terms):
 def check_eps(eps):
     if not (math.isfinite(eps) and 0 < eps <= MAX_EPS):
         raise ValueError("точность вне диапазона")
- 
+def safe_term(term, n):
+    try:
+        return term(n)
+    except ZeroDivisionError:
+        return 0
+    
 def sum_by_count(term, count):
     result = 0
     for n in range(1, count + 1):
-        result += term(n)
+        result += safe_term(term, n)
     return result
  
 def sum_by_eps(term, eps):
@@ -49,9 +55,9 @@ def sum_by_eps(term, eps):
     n = 0
     while True:
         n += 1
-        value = term(n)
+        value = safe_term(term, n)
         result += value
-        if abs(value) < eps:
+        if value != 0 and abs(value) < eps:
             return result, n
         if n >= MAX_ITERATIONS:
             raise ValueError("точность не достигнута")
