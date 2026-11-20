@@ -49,14 +49,18 @@ def handle_stats(args):
             values = read_numbers(handle)
     else:
         numbers = []
-        print('Введите числа: ')
+        if sys.stdin.isatty():
+            print('Введите числа: ')
         while True:
-            text = input()
+            try:
+                text = input()
+            except EOFError:        
+                break
             if text == '':
                 break
             numbers.extend(text.split())
-    values = read_numbers(numbers)
- 
+        values = read_numbers(numbers)
+    stats.check_values(values)
 
     for label, function, form in stats.REPORT:
         value = function(values)
