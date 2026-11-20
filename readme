@@ -1,55 +1,18 @@
 # mathtool
 
-Консольное приложение (лабораторная работа № 2, «Обработка числовых рядов»).
-Продолжение работы № 1: команда `solve` сохранена, добавлены `stats`, `series`, `integrate`.
+#Консольное приложение (лабораторная работа № 2, «Обработка числовых рядов»).
+#Продолжение работы № 1: команда `solve` сохранена, добавлены `stats`, `series`, `integrate`.
 
-Запускать нужно из каталога репозитория (иначе `--input numbers.txt` не найдёт файл).
+#Запускать нужно из каталога репозитория (иначе `--input numbers.txt` не найдёт файл).
 
 ## Команды
 
-    python mathtool.py                            общая справка
-    python mathtool.py <команда> --help           справка по команде
+#    python mathtool.py                            общая справка
+#    python mathtool.py <команда> --help           справка по команде
 
     
-    python mathtool.py solve -a 1 -b -3 -c 2 решение уравнения (без -a -b -c — ввод с клавиатуры)
-    python mathtool.py stats --input numbers.txt  показатели последовательности (без --input — стандартный ввод)
-    python mathtool.py series --func sqplus --terms 6
-    python mathtool.py series --func third --eps 0.0001
-    python mathtool.py integrate --func ratio --from 0 --to 20 --steps 1000
-
-| Команда   | Параметры |
-|-----------|-----------|
-| solve     | `-a -b -c` — целые, по модулю не более 10000; все три или ни одного |
-| stats     | `--input` — файл с числами (не более 20, по модулю не более 10000) |
-| series    | `--func {third,sqplus}`, ровно один из `--terms` (1..10000) и `--eps` (0 < eps ≤ 0.0001) |
-| integrate | `--func {ratio,root}`, `--from`, `--to`, `--steps` (1..100000); пределы внутри промежутка функции |
-
-## Структура
-
-    mathtool.py       точка входа: выбор команды, весь ввод-вывод
-    cli.py            разбор параметров (argparse)
-    calc/             расчётная часть (ничего не печатает)
-        equation.py   решение уравнения
-        stats.py      показатели последовательности
-        series.py     сумма ряда
-        integration.py  численное интегрирование
-    numbers.txt       пример данных для stats
-    tests.txt         набор тестов
-    run_tests.py      автоматический прогон tests.txt
-
-## Коды возврата
-
-0 — успех; 1 — ошибка в данных (сообщение в stderr); 2 — ошибка в командной строке (argparse).
-
-## Тесты
-
-    python run_tests.py          все тесты
-    python run_tests.py 5 12     выбранные
-
-Два теста с вводом с клавиатуры (solve без параметров) проверяются вручную.
-
-## Как добавить
-
-- показатель stats: функция в `calc/stats.py` + строка в `REPORT`;
-- ряд: функция слагаемого + строка в `FORMULAS` (`calc/series.py`);
-- функцию интеграла: функция + строка в `FUNCTIONS` (`calc/integration.py`).
+#    python mathtool.py solve -a 1 -b -3 -c 2 решение уравнения (без -a -b -c — ввод с клавиатуры)
+#    python mathtool.py stats --input numbers.txt  показатели последовательности (без --input — стандартный ввод)
+#    python mathtool.py series --func sqplus --terms 6
+#    python mathtool.py series --func third --eps 0.0001
+#    python mathtool.py integrate --func ratio --from 0 --to 20 --steps 1000
